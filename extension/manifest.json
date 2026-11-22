@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "TIS Question Downloader",
+  "short_name": "TIS Downloader",
+  "version": "1.5.0",
+  "description": "UMS এর MCQ ও Written প্রশ্ন (মূল Word file হুবহু) এক ক্লিকে একটি Word file এ Download করে। Developer: তারিকুল ইসলাম (সুমন)",
+  "author": "Tariqul Islam (Sumon)",
+  "action": {
+    "default_title": "TIS Question Downloader",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://umsbd.net/Exam/Question/Index*",
+        "https://www.umsbd.net/Exam/Question/Index*",
+        "https://umsbd.net/Exam/OnlineWrittenQuestion/Index*",
+        "https://www.umsbd.net/Exam/OnlineWrittenQuestion/Index*"
+      ],
+      "js": [
+        "jszip.min.js",
+        "merger.js",
+        "profile.js",
+        "content.js"
+      ],
+      "css": [
+        "panel.css",
+        "profile.css"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "icon48.png",
+        "photo.jpg",
+        "photo.png"
+      ],
+      "matches": [
+        "https://umsbd.net/*",
+        "https://www.umsbd.net/*"
+      ]
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "homepage_url": "https://github.com/tariqulislam4015/tis-question-downloader"
+}

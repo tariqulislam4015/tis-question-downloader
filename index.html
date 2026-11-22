@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TIS Question Downloader: Live Demo</title>
+  <meta name="description" content="UMS এর MCQ ও Written প্রশ্নের মূল Word file এক ক্লিকে একটি Word file এ। Chrome / Edge extension by Tariqul Islam (Sumon).">
+  <link rel="icon" href="extension/icon32.png">
+  <link rel="stylesheet" href="demo/demo.css">
+  <link rel="stylesheet" href="extension/panel.css">
+  <link rel="stylesheet" href="extension/profile.css">
+  <script src="demo/demo.js"></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap hero-in">
+      <img src="extension/icon128.png" alt="TIS Academy logo" class="hero-logo">
+      <div>
+        <h1>TIS Question Downloader</h1>
+        <p class="tag">UMS এর MCQ ও Written প্রশ্ন, মূল Word file হুবহু, <b>এক ক্লিকে একটি Word file এ</b>।</p>
+        <p class="tag-en">A Chrome / Edge extension that merges every question of a UMS exam into one .docx, unchanged.</p>
+        <div class="cta">
+          <a class="btn btn-main" href="#demo">▶ Live Demo</a>
+          <a class="btn" href="https://github.com/tariqulislam4015/tis-question-downloader/archive/refs/heads/main.zip">⬇ Download (ZIP)</a>
+          <a class="btn btn-ghost" href="https://github.com/tariqulislam4015/tis-question-downloader">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="features">
+      <div class="feat"><span>📄</span><h3>হুবহু কপি</h3><p>Edit এ যে আসল Word file খোলে সেটাই নেয়: table, box, ছবি, সমীকরণ সব অক্ষত।</p></div>
+      <div class="feat"><span>🧩</span><h3>MCQ + Written</h3><p>Manage Question আর Online Written Question দুই পেজেই কাজ করে।</p></div>
+      <div class="feat"><span>🔒</span><h3>শুধু পড়ে</h3><p>কোনো Update/Save করে না, password দেখে না। সব কাজ আপনার browser এর ভেতরেই।</p></div>
+      <div class="feat"><span>♻️</span><h3>Smart merge</h3><p>একই উদ্দীপকের প্রশ্ন একবার রাখে, ছবির নাম আলাদা করে, Word এর repair prompt এড়ায়।</p></div>
+    </section>
+
+    <section id="demo" class="demo">
+      <h2>Live Demo</h2>
+      <p class="muted">নিচের ফর্মটা UMS পেজের মতো করে বানানো। ডান দিকের নিচে আসল extension এর প্যানেল চলছে।
+        <b>⬇ Word File Download</b> চাপুন, নমুনা প্রশ্নগুলো জোড়া লেগে একটা .docx download হবে।
+        <br><small>(Demo তে কাল্পনিক নমুনা প্রশ্ন ব্যবহার করা হয়েছে; কোনো আসল সার্ভারে যোগাযোগ হয় না।)</small></p>
+
+      <div class="modes">
+        <a href="?mode=mcq#demo" data-mode="mcq">MCQ পেজ</a>
+        <a href="?mode=written#demo" data-mode="written">Written পেজ</a>
+      </div>
+
+      <div class="browser">
+        <div class="browser-bar"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="url">🔒 <span id="demo-url">umsbd.net/Exam/Question/Index</span></span></div>
+        <div class="ums">
+          <div class="ums-top">UMS <small>demo</small></div>
+          <div class="ums-card">
+            <div class="ums-card-h" id="demo-page-title">Manage Question</div>
+            <div class="ums-form">
+              <select id="OrganizationId"><option value="0">Select Organization</option><option value="13" selected>ONLINE CARE</option></select>
+              <select id="ProgramId"><option value="0">Select Program</option><option value="153" selected>Class 8 Academic Online Program</option></select>
+              <select id="SessionId"><option value="0">Select Session</option><option value="66" selected>2026</option><option value="65">2025</option></select>
+              <select id="CourseId"><option value="0">Select Course</option><option value="2612" selected>Class 8 Pioneer Batch [Online]</option></select>
+              <input id="ExamId" class="examPin" data-examid="0" placeholder="Search Exam">
+              <select id="ExamVersion"><option value="0">Version (ALL)</option><option value="1" selected>Bangla</option><option value="2">English</option></select>
+              <input id="UniqueSetNo" placeholder="Unique Set No.">
+              <select id="HasUddipok"><option value="">Has Uddipok (All)</option></select>
+              <select id="ImportFromWord"><option value="">Import From Word</option></select>
+              <input id="KeyWord" placeholder="Keyword">
+            </div>
+          </div>
+        </div>
+      </div>
+      <script>window.tisDemoInit && window.tisDemoInit();</script>
+    </section>
+
+    <section class="install">
+      <h2>Install (Windows 10/11 · Chrome / Edge)</h2>
+      <ol>
+        <li>উপরের <b>Download (ZIP)</b> থেকে file নামিয়ে Extract করুন। ভেতরের <code>extension</code> folder টা স্থায়ী জায়গায় রাখুন।</li>
+        <li>Chrome এ <code>chrome://extensions</code> (Edge এ <code>edge://extensions</code>) খুলুন।</li>
+        <li><b>Developer mode</b> চালু করুন।</li>
+        <li><b>Load unpacked</b> চেপে <code>extension</code> folder টা select করুন (যেখানে <code>manifest.json</code> আছে)।</li>
+        <li>UMS এ login করে MCQ বা Written পেজে যান। নিচে ডান কোণে প্যানেল আসবে।</li>
+      </ol>
+    </section>
+
+    <section class="dev">
+      <h2>Developer</h2>
+      <div id="dev-card"></div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">© 2026 Tariqul Islam (Sumon) · TIS Academy · MIT License</footer>
+
+  <!-- the real extension code -->
+  <script src="extension/jszip.min.js"></script>
+  <script src="extension/merger.js"></script>
+  <script src="extension/profile.js"></script>
+  <script src="extension/content.js"></script>
+  <script>
+    document.getElementById('dev-card').appendChild(window.TisProfile.build(['extension/photo.jpg']));
+  </script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+/* Developer profile card — all rules scoped to .tisp-card */
+.tisp-card {
+  --tisp-a: #15803d; --tisp-b: #65a30d; --tisp-c: #22c55e;
+  position: relative; text-align: center; padding: 14px 10px 10px;
+  border-radius: 12px; overflow: hidden;
+  background: linear-gradient(160deg, #f3fbf4 0%, #fff 55%, #f7fdf0 100%);
+  border: 1px solid #e1efe3;
+  font-family: "Segoe UI", "Nirmala UI", "SolaimanLipi", Arial, sans-serif;
+}
+.tisp-card::before {
+  content: ""; position: absolute; inset: -40% -40% auto auto; width: 160px; height: 160px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(101, 163, 13, .12), transparent 70%);
+  animation: tisp-drift 9s ease-in-out infinite alternate; pointer-events: none;
+}
+
+/* photo with rotating gradient ring + gentle float */
+.tisp-avatar { position: relative; width: 84px; height: 84px; margin: 0 auto 8px; animation: tisp-pop .7s cubic-bezier(.2,1.4,.4,1) both, tisp-float 4.5s ease-in-out 1s infinite; }
+.tisp-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--tisp-a), var(--tisp-b), var(--tisp-c), var(--tisp-a));
+  animation: tisp-spin 6s linear infinite;
+  box-shadow: 0 6px 18px rgba(21, 128, 61, .25);
+}
+.tisp-inner {
+  position: absolute; inset: 3px; border-radius: 50%; overflow: hidden; background: #fff;
+  display: flex; align-items: center; justify-content: center; border: 2px solid #fff;
+}
+.tisp-photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tisp-initials {
+  font-size: 34px; font-weight: 700;
+  background: linear-gradient(135deg, var(--tisp-a), var(--tisp-b));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* name: fade-up + moving shimmer */
+.tisp-name {
+  font-size: 17px; font-weight: 700; line-height: 1.35; margin-top: 2px;
+  background: linear-gradient(90deg, #14532d, var(--tisp-a), var(--tisp-b), var(--tisp-a), #14532d);
+  background-size: 250% 100%;
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: tisp-up .6s ease-out .2s both, tisp-shimmer 5s linear 1s infinite;
+}
+
+/* ______Msc Mathematics______ with lines that grow in */
+.tisp-pos { display: flex; align-items: center; justify-content: center; gap: 6px; margin: 3px 0 10px; animation: tisp-up .6s ease-out .35s both; }
+.tisp-pos-text { font-size: 12.5px; font-weight: 600; letter-spacing: .6px; color: #4b5563; white-space: nowrap; }
+.tisp-rule { height: 2px; width: 46px; border-radius: 2px; background: linear-gradient(90deg, transparent, var(--tisp-a)); transform: scaleX(0); animation: tisp-grow .7s ease-out .5s forwards; }
+.tisp-rule-l { transform-origin: right; }
+.tisp-rule-r { transform-origin: left; background: linear-gradient(90deg, var(--tisp-a), transparent); }
+
+/* links: staggered slide-in, hover lift + brand glow */
+.tisp-links { display: grid; gap: 6px; text-align: left; }
+.tisp-link {
+  display: flex; align-items: center; gap: 9px; padding: 6px 9px; border-radius: 9px;
+  text-decoration: none !important; color: #1f2937 !important; background: #fff;
+  border: 1px solid #eee; box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  animation: tisp-slide .5s ease-out both;
+}
+.tisp-link:hover, .tisp-link:focus-visible { transform: translateY(-2px); outline: none; }
+.tisp-yt:hover, .tisp-yt:focus-visible { border-color: #ff9b9b; box-shadow: 0 6px 14px rgba(255, 0, 0, .16); }
+.tisp-fb:hover, .tisp-fb:focus-visible { border-color: #9cc3fb; box-shadow: 0 6px 14px rgba(24, 119, 242, .18); }
+.tisp-wa:hover, .tisp-wa:focus-visible { border-color: #93e9b4; box-shadow: 0 6px 14px rgba(37, 211, 102, .2); }
+.tisp-li:hover, .tisp-li:focus-visible { border-color: #9ec5ec; box-shadow: 0 6px 14px rgba(10, 102, 194, .18); }
+.tisp-gh:hover, .tisp-gh:focus-visible { border-color: #bdbdbd; box-shadow: 0 6px 14px rgba(0, 0, 0, .16); }
+.tisp-icon { flex: 0 0 26px; width: 26px; height: 26px; display: inline-flex; }
+.tisp-icon svg { width: 100%; height: 100%; display: block; }
+.tisp-link:hover .tisp-icon { animation: tisp-wiggle .5s ease-in-out; }
+.tisp-yt .tisp-icon { animation: tisp-pulse 2.6s ease-in-out 1.6s infinite; }
+.tisp-txt { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.tisp-label { font-size: 13px; font-weight: 600; line-height: 1.2; }
+.tisp-sub { font-size: 11px; color: #6b7280; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tisp-go { color: #9ca3af; font-size: 13px; transition: transform .18s ease, color .18s ease; }
+.tisp-link:hover .tisp-go { transform: translate(2px, -2px); color: var(--tisp-a); }
+
+@keyframes tisp-spin { to { transform: rotate(360deg); } }
+@keyframes tisp-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+@keyframes tisp-pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
+@keyframes tisp-up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes tisp-shimmer { from { background-position: 0% 50%; } to { background-position: 250% 50%; } }
+@keyframes tisp-grow { to { transform: scaleX(1); } }
+@keyframes tisp-slide { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: none; } }
+@keyframes tisp-wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg) scale(1.1); } 75% { transform: rotate(10deg) scale(1.1); } }
+@keyframes tisp-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.12); } }
+@keyframes tisp-drift { from { transform: translate(0, 0); } to { transform: translate(-30px, 30px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tisp-card *, .tisp-card::before { animation: none !important; transition: none !important; }
+  .tisp-rule { transform: none; }
+}

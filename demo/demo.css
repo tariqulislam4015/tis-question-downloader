@@ -1,0 +1,68 @@
+:root { --g1: #14532d; --g2: #15803d; --g3: #65a30d; --ink: #1f2937; --muted: #6b7280; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; color: var(--ink); background: #f6faf6;
+  font: 15px/1.6 "Segoe UI", "Nirmala UI", "SolaimanLipi", "Noto Sans Bengali", Arial, sans-serif;
+}
+.wrap { max-width: 1040px; margin: 0 auto; padding: 0 20px; }
+h1, h2, h3 { line-height: 1.25; margin: 0 0 .4em; }
+code { background: #e7f2e9; padding: 1px 6px; border-radius: 4px; font-size: .92em; }
+
+.hero { background: linear-gradient(120deg, var(--g1), var(--g2) 55%, var(--g3)); color: #fff; padding: 48px 0 56px; }
+.hero-in { display: flex; gap: 28px; align-items: center; }
+.hero-logo { width: 120px; height: 120px; border-radius: 26px; background: #fff; box-shadow: 0 12px 30px rgba(0,0,0,.25); animation: float 5s ease-in-out infinite; }
+.hero h1 { font-size: 38px; }
+.tag { font-size: 18px; margin: 0 0 4px; }
+.tag-en { opacity: .85; margin: 0 0 18px; }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-block; padding: 10px 18px; border-radius: 10px; background: #fff; color: var(--g1); font-weight: 700; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.2); }
+.btn-main { background: #facc15; color: #3f2d00; }
+.btn-ghost { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.7); }
+
+.features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: -28px 0 36px; }
+.feat { background: #fff; border-radius: 14px; padding: 16px; box-shadow: 0 6px 20px rgba(20, 83, 45, .08); border: 1px solid #e3efe5; }
+.feat span { font-size: 26px; }
+.feat h3 { font-size: 17px; margin-top: 6px; color: var(--g1); }
+.feat p { margin: 0; color: var(--muted); font-size: 14px; }
+
+section h2 { font-size: 26px; color: var(--g1); }
+.muted { color: var(--muted); }
+.demo { margin-bottom: 40px; }
+.modes { display: flex; gap: 8px; margin: 14px 0; }
+.modes a { padding: 7px 16px; border-radius: 999px; border: 2px solid var(--g2); color: var(--g2); text-decoration: none; font-weight: 600; }
+.modes a.active { background: var(--g2); color: #fff; }
+
+.browser { border-radius: 12px; overflow: hidden; border: 1px solid #d5e2d8; box-shadow: 0 10px 30px rgba(0,0,0,.08); background: #fff; max-width: 680px; }
+.browser-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #eef2ef; border-bottom: 1px solid #dde6df; }
+.dot { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.dot.r { background: #f87171; } .dot.y { background: #fbbf24; } .dot.g { background: #34d399; }
+.url { margin-left: 10px; background: #fff; border-radius: 6px; padding: 3px 10px; font-size: 13px; color: #374151; flex: 1; }
+.ums-top { background: #2a0f3a; color: #fff; padding: 10px 14px; font-weight: 700; }
+.ums-top small { opacity: .6; font-weight: 400; }
+.ums-card { margin: 14px; border: 1px solid #ddd; border-radius: 6px; }
+.ums-card-h { background: #2a0f3a; color: #fff; padding: 8px 12px; border-radius: 6px 6px 0 0; }
+.ums-form { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 12px; }
+.ums-form select, .ums-form input { width: 100%; padding: 7px 8px; border: 1px solid #ccc; border-radius: 5px; font: inherit; font-size: 13px; background: #fff; }
+
+.install ol { background: #fff; border: 1px solid #e3efe5; border-radius: 14px; padding: 18px 18px 18px 40px; }
+.install li { margin: 4px 0; }
+.dev { margin: 40px 0; }
+.dev #dev-card { max-width: 360px; }
+.foot { color: var(--muted); font-size: 13px; padding: 20px 20px 120px; }
+
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+@media (max-width: 860px) {
+  .features { grid-template-columns: 1fr 1fr; }
+  .ums-form { grid-template-columns: 1fr 1fr; }
+  .hero-in { flex-direction: column; text-align: center; }
+  .cta { justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-logo { animation: none; } }
+
+/* keep page content clear of the extension panel (fixed bottom-right) on wide screens */
+@media (min-width: 1100px) {
+  .wrap { max-width: 1430px; padding-right: 390px; }
+  .features { grid-template-columns: repeat(2, 1fr); }
+}
